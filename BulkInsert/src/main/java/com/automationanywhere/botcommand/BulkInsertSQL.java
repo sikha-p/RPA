@@ -211,22 +211,22 @@ public class BulkInsertSQL {
 
 
     private static void processRow(Row row, PreparedStatement preparedStatement, Connection connection, String tableName, Sheet sheet) throws Exception {
-        Map<String, Integer> columnMaxLengths = getColumnMaxLength(connection, tableName);
+//        Map<String, Integer> columnMaxLengths = getColumnMaxLength(connection, tableName);
 
 // Set values for each column in the prepared statement
         for (int i = 0; i < row.getLastCellNum(); i++) {
             Cell cell = row.getCell(i);
-            String columnName = getColumnHeader(i, sheet);
+//            String columnName = getColumnHeader(i, sheet);
             String columnValue = cell != null ? cell.toString() : null;
 
-            int maxColumnLength = columnMaxLengths.getOrDefault(columnName, Integer.MAX_VALUE);
+//            int maxColumnLength = columnMaxLengths.getOrDefault(columnName, Integer.MAX_VALUE);
 
-            if (columnValue != null && columnValue.length() > maxColumnLength) {
-                logger.log(Level.SEVERE, "Error in row "+row.getRowNum());
-//                System.err.println("Data too long for column " + columnName + ": " + columnValue);
-
-                return; // Skip this row
-            }
+//            if (columnValue != null && columnValue.length() > maxColumnLength) {
+//                logger.log(Level.SEVERE, "Error in row "+row.getRowNum());
+////                System.err.println("Data too long for column " + columnName + ": " + columnValue);
+//
+//                return; // Skip this row
+//            }
 
             preparedStatement.setString(i + 1, columnValue);
         }
@@ -236,7 +236,7 @@ public class BulkInsertSQL {
 
     private static void processLine(String line, PreparedStatement preparedStatement) throws Exception {
 
-        String[] data = line.split(","); 
+        String[] data = line.split(",");
 
         for (int i = 0; i < data.length; i++) {
             preparedStatement.setString(i + 1, data[i]);
@@ -244,35 +244,35 @@ public class BulkInsertSQL {
 
         preparedStatement.addBatch();
     }
-    public static Map<String, Integer> getColumnMaxLength(Connection connection,String tableName)throws SQLException {
-        Map<String, Integer> columnMaxLengths = new HashMap<>();
-        try(PreparedStatement statement=connection.prepareStatement("SELECT name,max_length FROM sys.columns WHERE object_id = OBJECT_ID(?)")){
-            statement.setString(1,tableName);
+//    public static Map<String, Integer> getColumnMaxLength(Connection connection,String tableName)throws SQLException {
+//        Map<String, Integer> columnMaxLengths = new HashMap<>();
+//        try(PreparedStatement statement=connection.prepareStatement("SELECT name,max_length FROM sys.columns WHERE object_id = OBJECT_ID(?)")){
+//            statement.setString(1,tableName);
+//
+//            try(ResultSet resultSet= statement.executeQuery()){
+//                while(resultSet.next()){
+//                    String columnName = resultSet.getString("name");
+//                    int maxLength = resultSet.getInt("max_length");
+//                    columnMaxLengths.put(columnName,maxLength);
+//                }
+//            }
+//        }
+//        return columnMaxLengths;
+//    }
 
-            try(ResultSet resultSet= statement.executeQuery()){
-                while(resultSet.next()){
-                    String columnName = resultSet.getString("name");
-                    int maxLength = resultSet.getInt("max_length");
-                    columnMaxLengths.put(columnName,maxLength);
-                }
-            }
-        }
-        return columnMaxLengths;
-    }
-
-    public static String getColumnHeader(int columnIndex, Sheet sheet){
-        Row headerRow = sheet.getRow(0);
-        if(headerRow != null){
-            Cell cell = headerRow.getCell(columnIndex);
-            if (cell!= null){
-                return cell.getStringCellValue();
-            }
-        }
-        return "UnknownColum"+(columnIndex+1);
-    }
-    public static String getColumnHeader(int columnIndex){
-        return "Column"+(columnIndex+1);
-    }
+//    public static String getColumnHeader(int columnIndex, Sheet sheet){
+//        Row headerRow = sheet.getRow(0);
+//        if(headerRow != null){
+//            Cell cell = headerRow.getCell(columnIndex);
+//            if (cell!= null){
+//                return cell.getStringCellValue();
+//            }
+//        }
+//        return "UnknownColum"+(columnIndex+1);
+//    }
+//    public static String getColumnHeader(int columnIndex){
+//        return "Column"+(columnIndex+1);
+//    }
 
     private static void configureLogger(String logFilePath){
         try {
@@ -291,6 +291,5 @@ public class BulkInsertSQL {
 
 
 }
-
 
 
