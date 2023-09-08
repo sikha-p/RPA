@@ -1,0 +1,12 @@
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\obj\Release\OracleEBSOperations.csproj.CoreCompileInputs.cache
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\bin\Release\OracleEBSOperations.dll
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\bin\Release\OracleEBSOperations.pdb
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\bin\Release\log4net.dll
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\bin\Release\Newtonsoft.Json.dll
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\bin\Release\WindowsAccessBridgeInterop.dll
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\bin\Release\log4net.xml
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\bin\Release\Newtonsoft.Json.xml
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\obj\Release\OracleEBSOperations.csproj.CopyComplete
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\obj\Release\OracleEBSOperations.dll
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\obj\Release\OracleEBSOperations.pdb
+C:\Users\Sikha.P\source\repos\OracleEBSOperations\obj\Release\OracleEBSOperations.csproj.AssemblyReference.cache
