@@ -1,7 +1,8 @@
 ﻿/*
  * Author : SIKHA P 
- * sikha.p@automationanywhere.com
+ * Lead - Partner Solution Desk
  * Partner Solution Desk(PSD)
+ * Automation Anywhere
  */
 using System;
 using System.IO;
@@ -12,6 +13,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Xml;
+using Microsoft.Win32;
 
 namespace Rest_Web_Services
 {
@@ -29,6 +32,7 @@ namespace Rest_Web_Services
             string certificatePath,
             string privateKey)
         {
+            Console.WriteLine("Hi");
             //***cookie**//
             //key=value;key2=value2
 
@@ -39,6 +43,7 @@ namespace Rest_Web_Services
             //from bot   { "companyId":"IQ24143"}
             //from C# code   "{\"companyId\":\"IQ24143\"}",
 
+            //cookie = cookie.Replace(" ", "");
 
             string[] cookies = cookie.Split(';');
             CookieContainer cookieContainer = new CookieContainer();
@@ -67,17 +72,21 @@ namespace Rest_Web_Services
                 {
                     if (header.Length != 0)
                     {
-                        if (header.Split('=')[0] == "Accept" || header.Split('=')[0] == "accept")
+                        // Find the first index of '='
+                        Int32 index = header.IndexOf('=');
+                        string key = header.Split('=')[0];
+                        string value = header.Substring(index + 1);
+                        if (key == "Accept" || key == "accept")
                         {
                             httpRequest.Accept = header.Split('=')[1];
                         }
-                        else if (header.Split('=')[0] == "Content-Type")
+                        else if (key == "Content-Type")
                         {
                             httpRequest.ContentType = header.Split('=')[1];
                         }
                         else
                         {
-                            httpRequest.Headers.Add(header.Split('=')[0], header.Split('=')[1]);
+                            httpRequest.Headers.Add(key, value);
                         }
 
                     }
@@ -112,38 +121,52 @@ namespace Rest_Web_Services
                 {
                     WebResponse response = httpRequest.GetResponse();
 
-
-                    string contentDisposition = response.Headers["Content-Disposition"];
-
-
-                    if (contentDisposition != "")
+                    if (response.Headers.AllKeys.Contains("Content-Disposition"))
                     {
-                        string[] stringSeparators = new string[] { "filename=" };
-                        var fileName = CleanFileName(contentDisposition.Split(stringSeparators, StringSplitOptions.None)[1]);
-                        string[] stringSeparators2 = new string[] { ";" };
-                        fileName = CleanFileName(fileName.Split(stringSeparators2, StringSplitOptions.None)[0]);
-                        //var cp = new ContentDisposition(contentDisposition);
-                        //string fileName = cp.FileName;
-                        using (Stream output = File.OpenWrite("" + outputFolder + "/" + fileName))
-                        using (Stream input = response.GetResponseStream())
-                        {
-                            input.CopyTo(output);
-                        }
+                        string contentDisposition = response.Headers["Content-Disposition"];
 
-                        return "File saved in  : " + "" + outputFolder + "/" + fileName;
+
+                        if (contentDisposition != "")
+                        {
+                            string[] stringSeparators = new string[] { "filename=" };
+                            LogToFile(" INFO line 125:: contentDisposition " + contentDisposition);
+                            var fileName = CleanFileName(contentDisposition.Split(stringSeparators, StringSplitOptions.None)[1]);
+                            LogToFile(" INFO line 127: fileName after clean: " + fileName);
+                            string[] stringSeparators2 = new string[] { ";" };
+                            fileName = CleanFileName(fileName.Split(stringSeparators2, StringSplitOptions.None)[0]);
+                            LogToFile(" INFO line 130:: fileName after clean: " + fileName);
+                            //var cp = new ContentDisposition(contentDisposition);
+                            //string fileName = cp.FileName;
+                            using (Stream output = File.OpenWrite("" + outputFolder + "/" + fileName))
+                            using (Stream input = response.GetResponseStream())
+                            {
+                                input.CopyTo(output);
+                            }
+                            //
+                            return "File saved in  : " + "" + outputFolder + "/" + fileName;
+                        }
+                        else
+                        {
+                            LogToFile(" INFO : Unable to retrive file name & extension from the response ,  contentDisposition is empty");
+                            return "Unable to retrive file name & extension from the response ,  contentDisposition is empty";
+                        }
                     }
                     else
                     {
-
-                        return "Unable to retrive file name & extension from the response ,  contentDisposition is empty";
+                        LogToFile(" INFO : There is no response header named contentDisposition");
+                        return "There is no response header named contentDisposition!";
                     }
+
+                      
                 }
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                return ex.Message;
+                LogToFile(" ERROR line 151:: contentDisposition " + ex.ToString());
+                LogToFile(" ERROR line 151:: contentDisposition " + ex.Message);
+                Console.WriteLine(ex.ToString());
+                return ex.ToString();
             }
         }
 
@@ -322,8 +345,88 @@ namespace Rest_Web_Services
           
             return Path.GetInvalidFileNameChars().Aggregate(fileName, (current, c) => current.Replace(c.ToString(), string.Empty));
     }
+
+        private static void LogToFile(string line)
+        {
+            string logFile = "Rest_Web_service.log";
+            string logFileFolderPath = getLogFolderPath();
+
+            DateTime dateNow = DateTime.Now;
+            //2022 - Mar - 23 Wed 09:09:50.623
+            string now = dateNow.ToString("yyyy-MMM-dd ddd HH:mm:ss");
+
+            if (!File.Exists(logFileFolderPath + logFile))
+            {
+                if (!Directory.Exists(logFileFolderPath))
+                {
+                    Directory.CreateDirectory(logFileFolderPath);
+                }
+                File.Create(logFileFolderPath + logFile).Dispose();
+
+                using (TextWriter tw = new StreamWriter(logFileFolderPath + logFile, true))
+                {
+                    tw.WriteLine(now + ": " + line);
+                }
+
+            }
+            else if (File.Exists(logFileFolderPath + logFile))
+            {
+                using (TextWriter tw = new StreamWriter(logFileFolderPath + logFile, true))
+                {
+                    tw.WriteLine(now + ": " + line);
+                }
+            }
+        }
+
+        private static string getLogFolderPath()
+        {
+            string AAInstallationPath = checkInstalled("Automation Anywhere Bot Agent");
+            XmlDocument xml = new XmlDocument();
+            string xmlFilePath = AAInstallationPath + @"config\nodemanager-logging.xml";
+            xml.Load(xmlFilePath);
+            //XmlNodeList nodelist = xml.SelectNodes("//Property[@name='logPath']");
+            XmlNode node = xml.SelectSingleNode("//Property[@name='logPath']");
+            string logpath = node.InnerText + "/";
+            if (logpath.Contains("${env:PROGRAMDATA}"))
+            {
+                string pgrmDataEnv = Environment.GetEnvironmentVariable("PROGRAMDATA");
+                logpath = logpath.Replace("${env:PROGRAMDATA}", pgrmDataEnv);
+                logpath = logpath.Replace("\\", "/");
+            }
+            return logpath;
+        }
+        private static string checkInstalled(string findByName)
+        {
+            string displayName;
+            string InstallPath;
+            string registryKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+
+            //64 bits computer
+            RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+            RegistryKey key = key64.OpenSubKey(registryKey);
+
+            if (key != null)
+            {
+                foreach (RegistryKey subkey in key.GetSubKeyNames().Select(keyName => key.OpenSubKey(keyName)))
+                {
+                    displayName = subkey.GetValue("DisplayName") as string;
+                    if (displayName != null && displayName.Contains(findByName))
+                    {
+
+                        InstallPath = subkey.GetValue("InstallLocation").ToString();
+
+                        return InstallPath; //or displayName
+
+                    }
+                }
+                key.Close();
+            }
+
+            return null;
+        }
     }
+}
 
   
 
-}
+
