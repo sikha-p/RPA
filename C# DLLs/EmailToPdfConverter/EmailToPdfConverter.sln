@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33130.400
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailToPdfConverter", "EmailToPdfConverter.csproj", "{2B396214-60BB-4BCC-80DB-B58A1BDE9999}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B396214-60BB-4BCC-80DB-B58A1BDE9999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B396214-60BB-4BCC-80DB-B58A1BDE9999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B396214-60BB-4BCC-80DB-B58A1BDE9999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B396214-60BB-4BCC-80DB-B58A1BDE9999}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11772312-FBE8-4F1F-BF5A-9CE5AE996391}
+	EndGlobalSection
+EndGlobal
