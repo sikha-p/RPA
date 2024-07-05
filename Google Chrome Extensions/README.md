@@ -1,2 +1,3 @@
-# RPA
-Code Snippets and Custom packages/commands
+# Google Chrome Extensions
+
+Google chrome extensions for different use cases
