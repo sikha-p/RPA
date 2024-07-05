@@ -1,0 +1,25 @@
+Notes: 
+------------------------------------------------------------------------------
+
+1.  Change your Control Room URL in manifest.json
+   "content_scripts": [
+    {
+      "matches": [ "https://aa-pet-us-17.my.automationanywhere.digital/aari*" ],
+
+2. Inspect your Co-pilot form(Open Co-pilot page -> Start your public process) and get the Js path of the text fields (Ineligible amount, Total Amount, approved amount)
+3. Change the below lines in "content.js" accordingly
+
+           const IneligibleAmountEle = document.querySelector("#elem-TextBox2 > div > input");
+           const TotalAmountEle = document.querySelector("#elem-TextBox0 > div > input");
+           const ApprovedAmountEle = document.querySelector("#elem-TextBox1 > div > input");
+
+4. How to load the extension to chrome browser? 
+    i) Go to chrome://extensions/
+    ii) Enable Developer mode
+    iii) Click on "Load unpacked" and select the extension folder "CalculateApprovedAmount"
+    iv) Once the extension is loaded you can see that in the extensions list
+    v) Open Co-pilot page -> Start your public process. 
+
+
+   
+
