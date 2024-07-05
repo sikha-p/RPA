@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "CalculateApprovedAmount",
+  "version": "1.0",
+  "description": "Listens for changes in a IneligibleAmount text field and updates ApprovedAmount text field",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [ "https://aa-pet-us-17.my.automationanywhere.digital/aari*" ],
+      "js": [ "content.js" ],
+      "run_at": "document_start" // Ensure the script runs at the right time
+    }
+  ]
+}
