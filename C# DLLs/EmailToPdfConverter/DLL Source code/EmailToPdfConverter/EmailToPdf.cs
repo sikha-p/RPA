@@ -34,7 +34,24 @@ namespace EmailToPdfConverter
                 toAddresses = toAddresses.Replace("<", string.Empty);
                 toAddresses = toAddresses.Replace(">", string.Empty);
                 string Sent = message.Date.ToString("f");
-                var body = message.HtmlBody ?? message.TextBody ?? "No Body";
+                //var body = message.HtmlBody ?? message.TextBody ?? "No Body";
+                var body = "";
+                if (message.HtmlBody == null)
+                {
+                    body = message.TextBody;
+                    body = $"<pre>{body}</pre>";
+                    body = body.Replace("\t", "\u00A0\u00A0\u00A0\u00A0"); // Replace tab with 4 non-breaking spaces
+                    body = body.Replace(" ", "\u00A0"); // Non-breaking space
+                    body = body.Replace("\n", "<br>");
+                }
+                else if (message.HtmlBody != null)
+                {
+                    body = message.HtmlBody;
+                }
+                else
+                {
+                    body = "No Body";
+                }
 
 
 
@@ -94,10 +111,10 @@ namespace EmailToPdfConverter
                 var configurationOptions = new PdfGenerateConfig();
 
                 //Page is in Landscape mode, other option is Portrait
-                configurationOptions.PageOrientation = PdfSharp.PageOrientation.Portrait;
+                configurationOptions.PageOrientation = PdfSharp.PageOrientation.Landscape;
 
                 //Set page type as Letter. Other options are A4 ...
-                configurationOptions.PageSize = PdfSharp.PageSize.Letter;
+                configurationOptions.PageSize = PdfSharp.PageSize.A4;
 
                 //This is to fit Chrome Auto Margins when printing.Yours may be different
                 configurationOptions.MarginBottom = 19;

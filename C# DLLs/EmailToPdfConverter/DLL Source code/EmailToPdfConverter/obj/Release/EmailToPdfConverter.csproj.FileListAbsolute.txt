@@ -35,7 +35,6 @@ C:\Users\Sikha.P\source\repos\EmailToPdfConverter\bin\Release\System.Threading.T
 C:\Users\Sikha.P\source\repos\EmailToPdfConverter\bin\Release\System.ValueTuple.xml
 C:\Users\Sikha.P\source\repos\EmailToPdfConverter\bin\Release\de\PdfSharp.resources.dll
 C:\Users\Sikha.P\source\repos\EmailToPdfConverter\bin\Release\de\PdfSharp.Charting.resources.dll
-C:\Users\Sikha.P\source\repos\EmailToPdfConverter\obj\Release\EmailToPdfConverter.csproj.AssemblyReference.cache
 C:\Users\Sikha.P\source\repos\EmailToPdfConverter\obj\Release\EmailToPdfConverter.csproj.CoreCompileInputs.cache
 C:\Users\Sikha.P\source\repos\EmailToPdfConverter\obj\Release\EmailToPdfConverter.csproj.CopyComplete
 C:\Users\Sikha.P\source\repos\EmailToPdfConverter\obj\Release\EmailToPdfConverter.dll
