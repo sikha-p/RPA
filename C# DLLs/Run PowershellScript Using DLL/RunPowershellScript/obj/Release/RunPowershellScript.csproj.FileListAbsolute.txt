@@ -1,0 +1,6 @@
+C:\Users\Sikha.P\source\repos\RunPowershellScript\bin\Release\RunPowershellScript.dll.config
+C:\Users\Sikha.P\source\repos\RunPowershellScript\bin\Release\RunPowershellScript.dll
+C:\Users\Sikha.P\source\repos\RunPowershellScript\bin\Release\RunPowershellScript.pdb
+C:\Users\Sikha.P\source\repos\RunPowershellScript\obj\Release\RunPowershellScript.csproj.CoreCompileInputs.cache
+C:\Users\Sikha.P\source\repos\RunPowershellScript\obj\Release\RunPowershellScript.dll
+C:\Users\Sikha.P\source\repos\RunPowershellScript\obj\Release\RunPowershellScript.pdb
