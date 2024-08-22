@@ -22,14 +22,6 @@ Before running this project, ensure you have the following installed:
 ### Create self signed server and client certificates
 Ignore if you are certificates with you
 
-* run init.sh file
-```
-./init.sh
-# Start 'er up.
-cd ..
-node app
-
-```
 You should have following files in the certs folder by default
 1.ca-template.cnf
 2.client-template.cnf
@@ -39,6 +31,16 @@ You should have following files in the certs folder by default
 6.init.sh
 7.server.cnf
 8.clean.sh
+
+
+* run init.sh file
+```
+cd certs
+./init.sh
+```
+
+* The init.sh initilizes 3 other .sh files. First one for creating a CA certificate for the server. (create_ca.sh). Next one for creating the certificate with the previously created CA certificate as its CA(parent). Next one is for creating the client cretificate. please find the more details about these files below.
+
 
 * Create a CA for the server cert 
 
@@ -109,9 +111,10 @@ set NODE_EXTRA_CA_CERTS=C:\Users\Administrator\Documents\SIKHA\PSD\SoapService-A
 
 You can use the below command to get the configuration set 
 echo %NODE_EXTRA_CA_CERTS%
+
 ## Authors
 
 Contributors names and contact info
 
-ex. Sikha Poyyil
+1. Sikha Poyyil
 
