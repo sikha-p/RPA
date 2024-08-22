@@ -20,7 +20,7 @@ Before running this project, ensure you have the following installed:
 * A valid client and server certificate pair
 
 ### Create self signed server and client certificates
-Ignore if you are certificates with you
+Ignore if you have certificates with you. Server will check whether the passed client certificate has been issued by the specified CA (as specified in the server.js code)
 
 You should have following files in the certs folder by default
 1.ca-template.cnf
@@ -39,7 +39,7 @@ cd certs
 ./init.sh
 ```
 
-* The init.sh initilizes 3 other .sh files. First one for creating a CA certificate for the server. (create_ca.sh). Next one for creating the certificate with the previously created CA certificate as its CA(parent). Next one is for creating the client cretificate. please find the more details about these files below.
+* The init.sh initilizes 3 other .sh files. First one for creating a CA certificate for the server. (create_ca.sh). Next one for creating the certificate with the previously created CA certificate as its CA(parent). Next one is for creating the client cretificate. please find the more details about these files below. No need to run these .sh files seperately. init.sh will initiate these.
 
 
 * Create a CA for the server cert 
