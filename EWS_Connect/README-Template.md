@@ -42,6 +42,8 @@ There are 2 functions inside the dll.
 ![image](https://github.com/user-attachments/assets/d45877ef-6fe9-435f-ad08-8cb768bebe74)
 
 
+This A360 Bot will generate a log file in the following path "C:\ProgramData\AutomationAnywhere\BotRunner\Logs\EWSConnectAndMoveFilteredEmails.log". This can be used for the debugging purpose.
+
 
 ## Authors
 
