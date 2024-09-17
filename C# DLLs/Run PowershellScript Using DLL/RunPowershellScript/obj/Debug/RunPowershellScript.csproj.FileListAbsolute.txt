@@ -1,0 +1,7 @@
+C:\Users\Sikha.P\source\repos\RunPowershellScript\bin\Debug\RunPowershellScript.dll
+C:\Users\Sikha.P\source\repos\RunPowershellScript\bin\Debug\RunPowershellScript.pdb
+C:\Users\Sikha.P\source\repos\RunPowershellScript\bin\Debug\System.Management.Automation.dll
+C:\Users\Sikha.P\source\repos\RunPowershellScript\obj\Debug\RunPowershellScript.csproj.CoreCompileInputs.cache
+C:\Users\Sikha.P\source\repos\RunPowershellScript\obj\Debug\RunPowershellScript.csproj.CopyComplete
+C:\Users\Sikha.P\source\repos\RunPowershellScript\obj\Debug\RunPowershellScript.dll
+C:\Users\Sikha.P\source\repos\RunPowershellScript\obj\Debug\RunPowershellScript.pdb
