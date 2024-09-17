@@ -171,8 +171,7 @@ public class TriggerAPI {
 				return new StringValue("Request Sent.");
 
 			}
-
-			return new StringValue(statusCode);
+			return new StringValue(Integer.toString(statusCode));
 
 		} catch (Exception e) {
 			e.printStackTrace();
