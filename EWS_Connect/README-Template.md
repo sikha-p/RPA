@@ -36,9 +36,13 @@ There are 2 functions inside the dll.
 
 
 
-![image](https://github.com/user-attachments/assets/1ad002a7-66df-49d5-a5c9-c0bc97cc2dd6)
+![image](https://github.com/user-attachments/assets/5208eb4a-e90c-41dc-9fdc-df62d38368f2)
+![image](https://github.com/user-attachments/assets/5208eb4a-e90c-41dc-9fdc-df62d38368f2)
 
-![image](https://github.com/user-attachments/assets/42efad93-8fd6-471f-b599-350e0883f153)
+
+![image](https://github.com/user-attachments/assets/d45877ef-6fe9-435f-ad08-8cb768bebe74)
+![image](https://github.com/user-attachments/assets/d45877ef-6fe9-435f-ad08-8cb768bebe74)
+
 
 
 ## Authors
