@@ -43,8 +43,9 @@ There are 3 functions inside the dll.
 * Microsoft.IdentityModel.Abstractions.dll
 
 
+![image](https://github.com/user-attachments/assets/043e9058-8508-4f56-95ad-20a2c7a9e876)
 
-![image](https://github.com/user-attachments/assets/5208eb4a-e90c-41dc-9fdc-df62d38368f2)
+![image](https://github.com/user-attachments/assets/e4c2d23c-ce7c-4815-9933-185a06e93844)
 
 
 ![image](https://github.com/user-attachments/assets/d45877ef-6fe9-435f-ad08-8cb768bebe74)
