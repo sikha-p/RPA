@@ -6,15 +6,23 @@ A DLL to connect to an EWS server using client credentials grant flow, read all/
 ## Description
 
 You can use this DLL inside the A360 Bot.Please find the exported bot from the same repository.
-There are 2 functions inside the dll.
+There are 3 functions inside the dll.
 
-* Connect
+* ConnectWithBasicAuth
+    * username
+    * password
+    * domain
+    * exchangeVersion (eg: Exchange2010_SP2)
+                      (https://learn.microsoft.com/en-us/dotnet/api/microsoft.exchange.webservices.data.exchangeversion?view=exchange-ews-api)
+
+* ConnectWithClientCredentialsAuth
     * clientId
     * tenantId
     * clientSecret
     * username
     * exchangeVersion (eg: Exchange2010_SP2)
                       (https://learn.microsoft.com/en-us/dotnet/api/microsoft.exchange.webservices.data.exchangeversion?view=exchange-ews-api)
+
 
 * GetEmails
     * filterCondition ( options : ALL/READ/UNREAD)

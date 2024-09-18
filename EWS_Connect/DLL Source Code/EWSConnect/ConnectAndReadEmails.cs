@@ -16,10 +16,47 @@ namespace EWSConnect
         public string ewsUrl = "https://outlook.office365.com/EWS/Exchange.asmx";
         ExchangeService service;
         string foldernotfoundError = "";
-        public string Connect(string clientId, string tenantId, string clientSecret, string username, string exchangeVersion)
+        public string authType = "";
+
+        public string ConnectWithBasicAuth(string username, string password,string domain,string exchangeVersion)
         {
             try
             {
+                authType = "BASIC";
+                _username = username;
+
+                // Convert input string to ExchangeVersion enum
+                if (!Enum.TryParse(exchangeVersion, out ExchangeVersion exchangeVersion_))
+                {
+                    Logger.LogToFile("ERROR: Invalid Exchange version specified.Please refer https://learn.microsoft.com/en-us/dotnet/api/microsoft.exchange.webservices.data.exchangeversion?view=exchange-ews-api");
+                    return "ERROR: Invalid Exchange version specified.";
+                }
+
+               
+                // Initialize the ExchangeService
+                service = new ExchangeService(exchangeVersion_)
+                {
+                    Url = new Uri(ewsUrl),
+                    Credentials = new WebCredentials(username, password, domain)
+                };
+
+
+
+                Logger.LogToFile("INFO: Connected successfully!");
+                return "Connected sucecssfully " + Logger.getLogFolderPath();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogToFile("ERROR: " + ex.Message);
+                return "ERROR: " + ex.Message;
+            }
+        }
+
+        public string ConnectWithClientCredentialsAuth(string clientId, string tenantId, string clientSecret, string username, string exchangeVersion)
+        {
+            try
+            {
+                authType = "CLIENT_CREDENTIALS";
                 _tenantId = tenantId;
                 _clientId = clientId;
                 _clientSecret = clientSecret;
@@ -57,9 +94,13 @@ namespace EWSConnect
 
             try
             {
-                // Specify the email address to impersonate
-                service.ImpersonatedUserId = new ImpersonatedUserId(ConnectingIdType.SmtpAddress, _username);
-                DataTable dataTable = new DataTable();
+                if(authType == "CLIENT_CREDENTIALS")
+                {
+                    // Specify the email address to impersonate
+                    service.ImpersonatedUserId = new ImpersonatedUserId(ConnectingIdType.SmtpAddress, _username);
+
+
+                }
 
                 // Get the target folder by traversing the folder hierarchy
                 Folder targetFolder = FindFolderByPath(folderPath);
