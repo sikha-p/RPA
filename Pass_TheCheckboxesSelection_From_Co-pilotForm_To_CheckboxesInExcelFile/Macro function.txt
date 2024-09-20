@@ -1,0 +1,30 @@
+Sub SelectCheckboxesByLabels(sParam1 As String, sParam2 As String, sParam3 As String, sParam4 As String)
+    Dim chk As Object
+    Dim ws As Worksheet
+    Dim i As Integer
+    Dim params As Variant
+    Dim label As String
+    Dim state As Boolean
+
+    Set ws = ThisWorkbook.Sheets("Sheet1") ' Change "Sheet1" to your sheet's name
+
+    ' Combine parameters into an array
+    params = Array(sParam1, sParam2, sParam3, sParam4)
+
+    ' Iterate through each parameter
+    For i = LBound(params) To UBound(params)
+        label = Split(params(i), "=")(0)
+        state = CBool(Split(params(i), "=")(1))
+
+        ' Iterate through all checkboxes in the sheet
+        For Each chk In ws.CheckBoxes
+            If chk.Text = label Then
+                If state Then
+                    chk.Value = xlOn
+                Else
+                    chk.Value = xlOff
+                End If
+            End If
+        Next chk
+    Next i
+End Sub
