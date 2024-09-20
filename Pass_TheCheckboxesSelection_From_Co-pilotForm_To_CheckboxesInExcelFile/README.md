@@ -7,8 +7,13 @@ Assume you have a Co-pilot process and the FORM inside the process has a checkbo
 * We need to use a macro function to make this work. So your Excel file should be a Macro-enabled spreadsheet (.xlsm) file with a macro function encapsulated in it .
 
 
-### This solution passes the checkbox group selection details from the co-pilot FORM to an A360 Bot inside the process. The A360 Bot will run a Macro function to set the checkboxes values in a local Excel file as per the input from the co-pilot FORM.
+#### This solution passes the checkbox group selection details from the co-pilot FORM to an A360 Bot inside the process. The A360 Bot will run a Macro function to set the checkboxes values in a local Excel file as per the input from the co-pilot FORM.
 
+
+![image](https://github.com/user-attachments/assets/520e4d34-54ef-4d29-9d06-1bec9b726aa9)
+
+
+![image](https://github.com/user-attachments/assets/d61fb51a-4e71-4383-bb8e-0e6058bab48f)
 
 ```
 Sub SelectCheckboxesByLabels(sParam1 As String, sParam2 As String, sParam3 As String, sParam4 As String)
