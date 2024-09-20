@@ -26,6 +26,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
@@ -129,10 +130,17 @@ public class TriggerAPI {
 			@Idx(index = "4", type = NUMBER )
 			//UI labels.
 			@Pkg(label = "Enter connectionTimeOut in millisecond",default_value_type = DataType.NUMBER)
-			Double connTimeOut) {
+			Double connTimeOut,
+			@Idx(index = "5", type = TEXT)
+			//UI labels.
+			@Pkg(label = "Enter the Payload")
+			//Ensure that a validation error is thrown when the value is null.
+			@NotEmpty
+			String payLoad) {
 		
 		//Internal validation, to disallow empty strings. No null check needed as we have NotEmpty on firstString.
 		try {
+			payLoad = payLoad.trim();
 			LOGGER.traceEntry();
 			// Create a URL object
 			URL url = new URL(urlString);
@@ -142,6 +150,7 @@ public class TriggerAPI {
 
 			// Set the request method to POST
 			connection.setRequestMethod("POST");
+
 
 			// Set headers if any are provided
 			if (headers != null) {
@@ -160,19 +169,31 @@ public class TriggerAPI {
 			connection.setReadTimeout(readTimeOut.intValue());
 			int statusCode;
 
-			// Checking if there's a response
+			if (payLoad != null && !payLoad.isEmpty()) {
+//				payLoad = payLoad.replaceAll("(?<=\\{)\\s+|\\s+(?=\\})|(?<=\\[)\\s+|\\s+(?=\\])|\\s*(,|:)\\s*", "$1");
+				payLoad = payLoad.replaceAll(">\\s+<", "><").trim();
+				try (OutputStream os = connection.getOutputStream()) {
+					byte[] input = payLoad.getBytes("utf-8");
+					os.write(input, 0, input.length);
+				}
+			}
+
+			StringBuilder response = new StringBuilder();
 			try (InputStream is = connection.getInputStream()) {
 				statusCode = connection.getResponseCode();
+
+				// Read the response if available before timeout
 				byte[] buffer = new byte[1024];
-				while (is.read(buffer) != -1) {
-					// Optionally process the response
+				int bytesRead;
+				while ((bytesRead = is.read(buffer)) != -1) {
+					response.append(new String(buffer, 0, bytesRead));
 				}
-			}catch (SocketTimeoutException e){
+				return new StringValue(response.toString());
+
+			} catch (SocketTimeoutException e) {
+				// Handle read timeout, return "Request Sent" if no response in time
 				return new StringValue("Request Sent.");
-
 			}
-			return new StringValue(Integer.toString(statusCode));
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			LOGGER.error(e.getMessage());
