@@ -1,0 +1,11 @@
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Debug\TablesInWordDocToExcel.dll
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Debug\TablesInWordDocToExcel.pdb
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Debug\Xceed.Document.NET.dll
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Debug\Xceed.Words.NET.dll
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\obj\Debug\TablesInWordDocToExcel.csproj.AssemblyReference.cache
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\obj\Debug\TablesInWordDocToExcel.csproj.CoreCompileInputs.cache
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\obj\Debug\TablesInWordDocToExcel.csproj.CopyComplete
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\obj\Debug\TablesInWordDocToExcel.dll
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\obj\Debug\TablesInWordDocToExcel.pdb
