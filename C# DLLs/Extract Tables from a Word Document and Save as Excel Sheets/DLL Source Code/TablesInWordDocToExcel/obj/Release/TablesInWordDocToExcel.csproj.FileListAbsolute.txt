@@ -1,0 +1,11 @@
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Release\TablesInWordDocToExcel.dll
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Release\TablesInWordDocToExcel.pdb
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Release\Newtonsoft.Json.dll
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Release\Xceed.Document.NET.dll
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Release\Xceed.Words.NET.dll
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\bin\Release\Newtonsoft.Json.xml
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\obj\Release\TablesInWordDocToExcel.csproj.AssemblyReference.cache
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\obj\Release\TablesInWordDocToExcel.csproj.CoreCompileInputs.cache
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\obj\Release\TablesInWordDocToExcel.csproj.CopyComplete
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\obj\Release\TablesInWordDocToExcel.dll
+C:\Users\Sikha.P\source\repos\TablesInWordDocToExcel\obj\Release\TablesInWordDocToExcel.pdb
