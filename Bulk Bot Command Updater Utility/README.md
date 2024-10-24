@@ -29,7 +29,9 @@ This repository provides a utility for updating multiple command attribute value
 
 
 4. **Generate Pre-Update Report**
-   - Execute the `BulkBotCommandUpdater-Report` bot to generate a report of the bots in the specified folder, which includes the given commands. This will add two additional sheets to the `Input.xlsx` file: "Bot_IDs" and "Pre-update-report".
+   - Execute the `BulkBotCommandUpdater-Report` bot to generate a report of the bots in the specified folder, which includes the given commands.
+
+   - Provide your Public folder ID as the input. This Utility will work on the Public folder. So no need to check out the bots before running this Utility bots. This will add two additional sheets to the `Input.xlsx` file: "Bot_IDs" and "Pre-update-report".
 
 5. **Run the Bulk Updater**
    - Next, run the `BulkBotCommandUpdater` bot to update the commands and attributes within the bots.
