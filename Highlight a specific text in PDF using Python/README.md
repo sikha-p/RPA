@@ -1,4 +1,4 @@
-## Locate and Highlight Specific Text in a PDF using DLL
+## Locate and Highlight Specific Text in a PDF using Python Script
 ##### This A360 Bot will help you to locate and highlight Specific Text in a PDF using Python Script.
 
 eg :  text : "Null"
