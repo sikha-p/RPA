@@ -1,0 +1,12 @@
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\bin\Release\HighlightPDFTextV2.dll
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\bin\Release\HighlightPDFTextV2.pdb
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\bin\Release\Spire.License.dll
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\bin\Release\Spire.Pdf.dll
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\bin\Release\Microsoft.mshtml.dll
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\bin\Release\Spire.License.xml
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\bin\Release\Spire.Pdf.xml
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\obj\Release\HighlightPDFTextV2.csproj.AssemblyReference.cache
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\obj\Release\HighlightPDFTextV2.csproj.CoreCompileInputs.cache
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\obj\Release\HighlightPDFTextV2.csproj.CopyComplete
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\obj\Release\HighlightPDFTextV2.dll
+C:\Users\Sikha.P\source\repos\HighlightPDFTextV2\obj\Release\HighlightPDFTextV2.pdb
