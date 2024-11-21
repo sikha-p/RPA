@@ -27,10 +27,13 @@ https://botstore.automationanywhere.com/bot/automation-360-aws-s3-file-managemen
 The main DLL has 2 dependant files
 AWSSDK.S3.dll
 AWSSDK.Core.dll
+- Please refer to the 'AWSS3-File Management using IAM User' link given below for detailed instructions on its usage within the A360 Bot https://github.com/partnersolutiondesk/RPA/tree/main/C%23%20DLLs/AWSS3-File%20Management
 
 Use below Amazon documentation link to get the region system name (2nd column in the table)
 https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html
 
 ![image](https://github.com/partnersolutiondesk/RPA/assets/84059776/a97ec5bc-3ce4-4189-a7ac-8cc411de42f1)
 
+
+![image](https://github.com/user-attachments/assets/537b502e-4364-4c0f-8ca8-bf3ee47d27f6)
 
