@@ -1,44 +1,37 @@
 # PushPull from GoogleSheet to AutomationAnywhere
 - This Git repo will help you to understand how to PushPull data from GoogleSheet to Automation Anywhere
 
-## What is CEF application?
-The Chromium Embedded Framework (CEF) is an open-source software framework for embedding a Chromium web browser within another application.
+## How to Pull data from GoogleSheet to Automation Anywhere
+- You can use GoogleSheet Automation Anywhere Command to connect with Google Sheet using Client ID and Secret. And Open the Google SpreadSheet using the SpreadSheet ID from the and put it in the command. Retrieve the GoogleSheet Data using GoogleSheet: Get multiple cells command and Save the output to a DataTable Variable.
 
-- Sample CEF Application EXE : CEFApplication.exe
-- CEF Application source code : CEFApplication.zip
-## How to launch the CEF Application?
-- Clone this Github repo and unzip CEFApplication.zip. Use below command to run the CEF Application using command prompt
--     Go to folder
--     > CEFApplication.exe --remote-debugging-port=9222
-
-- Or
--     > CEFApplication.exe "<URL>" --remote-debugging-port=9222
--     eg : > CEFApplication.exe "www.google.com" --remote-debugging-port=9222
-Note : We should launch the CEF Application in debug mode on a particular port (eg: 9222) to allow the DLL to interact with it. 
-
-## How to automate CEF Application?
- You can use a DLL to automate the CEF Application.
- 
-- The DLL source code : CEFApplicationAutomation.zip
-- The DLL is internally using "OpenQA.Selenium" .NET library to interact with the CEF Application.
+![image](https://github.com/user-attachments/assets/bc0dc3a2-d880-4881-90f3-5d340ea9dbce)
 
 
-Note : We are using Selenium webdriver to interact with the CEF Application. If the default webdriver doesn't support, please download the appropriate one from the below link and use it inside the DLL source code. 
-https://chromedriver.storage.googleapis.com/index.html
+## How to Push data from GoogleSheet to Automation Anywhere WLM Queue based on the GoogleSheet events
+- You can define triggers through Google Apps Script, which is a JavaScript-based language for extending Google Sheets and other Google Workspace apps.
 
-Default webdriver :  
+Here's how you can define triggers and perform operations when those triggers occur:
 
-`using (IWebDriver driver = new ChromeDriver(options))`
+1. Open Google Sheets and Script Editor
+Open the Google Sheets document.
+Go to Extensions > Apps Script to open the script editor.
+2. Writing the Trigger Functions
 
-Custom Webdriver :  
-       
-`using (IWebDriver driver = new ChromeDriver(@"C:\Users\Sikha.P\Downloads\chromedriver_win32 (2)", options))`
+ ![image](https://github.com/user-attachments/assets/602e3c56-277d-40ee-9cf6-fd40cd6e102d)
 
-### Note
-You can use Automation Anywhere DLL package to call the DLL function and automate the CEF application. The DLL function  "connectAndPerformAutomation" will connect with the CEF Application with is running in debug mode on port 9222 with "www.google.com" as URL. It will connect to CEF Application and type "Automation Anyhwere" on the search textbox.
+ ![image](https://github.com/user-attachments/assets/d72e5179-bd80-4b71-acbf-d73b113c40ff)
 
 
- ` var element = driver.FindElement(By.XPath("//*[@id='APjFqb']"));
-   element.SendKeys("Automation Anywhere");`
-                
-Feel free to edit the DLL source code as per your URL and requirement and build a DLL. 
+Here is a sample script 
+![image](https://github.com/user-attachments/assets/2ba0ef83-f252-455c-a1c3-277164376850)
+
+Attached OnEdit() function with Edit event and, we are calling Automation Anywhere WLM Add workitems to the Queue API inside. This will add the workitems to the queue with the modified data when ever the Edit event get trigered. 
+
+Note: Please find the GoogleScript for adding workitems to the queue from the repo "GoogleScript.txt" file
+
+
+
+
+
+
+
