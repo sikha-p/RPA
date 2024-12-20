@@ -1,0 +1,70 @@
+function onEdit(e) {
+  var range = e.range;
+  var sheet = e.source.getActiveSheet();
+  
+  // Check if the edit is happening in a specific sheet and column
+  if (sheet.getName() === 'Sheet1') {
+    var editedValue = e.value;
+    callApi(editedValue); // Trigger API for edits in column B
+  }
+}
+
+function callApi(cellValue) {
+  //call auth api
+
+  var CR_URL = "https://xxxxxx.my.automationanywhere.digital";
+   var payload = {
+    'username': 'sikha.creator', // Data from the edited cell
+    'apiKey': 'xxxxx' // You can send additional data if needed
+  };
+  var url = CR_URL+'/v2/authentication'; 
+   var options = {
+    'method': 'POST',
+    'contentType': 'application/json',
+    'payload': JSON.stringify(payload) // Convert the payload to JSON
+  };
+
+  try {
+    // Make the POST request
+    var response = UrlFetchApp.fetch(url, options);
+    var responseData = JSON.parse(response.getContentText());
+    var token = responseData.token;
+    //call add workitems to queue api
+    var queueAPIUrl = CR_URL+"/v3/wlm/queues/207/workitems";
+    var payloadQueue = {
+    "workItems": [
+      {
+        "json": {
+          "Body": JSON.stringify({
+            "PONumber": cellValue
+          }),
+          "BotPath": "Bots\\WLM_Optimized\\FeederQueue-PurchaseOrder-TaskBot",
+          "ProcessPriority": "1",
+          "WorkitemPriority": "1",
+          "Score": "1"
+        }
+      }
+    ]
+  };
+
+  var optionsQueue = {
+    'method': 'POST',
+    'contentType': 'application/json',
+    'headers': {
+      'X-Authorization': token // Add the 'X-Authorization' header with the token
+    },
+    'payload': JSON.stringify(payloadQueue) // Convert the payload to JSON
+  };
+   var responseQueue = UrlFetchApp.fetch(queueAPIUrl, optionsQueue);
+    Logger.log('API Response: ' + responseQueue.getContentText()); // Log the response from the API
+  } catch (e) {
+    Logger.log('Error calling API: ' + e.message); // Log any error that occurs
+  }
+
+  //var recipient = "sikha.p@automationanywhere.com"; // Replace with the email address of the recipient
+  //var subject = "Google sheet modified"; // The subject of the email
+  //var body = "This is the body of the email." +cell; // The body of the email
+  
+  // Send the email using MailApp service
+  //MailApp.sendEmail(recipient, subject, body);
+}
