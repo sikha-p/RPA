@@ -37,9 +37,9 @@ b.keySize,b.ivSize);l.iv=d.iv;b=a.encrypt.call(this,b,c,d.key,l);b.mixIn(d);retu
 	
 function decryptAES() {
   
-  var key = "enter_your_key");
-  var encryptedStr = "U2FsdGVkX1+3CE87k2SwbSIK1JP4QFK1yOsk/E++bWM="; // Encrypted string
+  var key = "sa23!ajs&&*ha";
+  var encryptedStr = "U2FsdGVkX1/4hOxWQhOSuAf7/qz3Fa9epki5KvhS0wk="; // Encrypted string
 
-   var decryptedMessage = CryptoJS.AES.decrypt(encryptedStr, key).toString(CryptoJS.enc.Utf8);
-  console.log("Decrypted Text:", decryptedMessage); // Output: sample text
+  var decryptedMessage = CryptoJS.AES.decrypt(encryptedStr, key).toString(CryptoJS.enc.Utf8);
+  return decryptedMessage;
 }
