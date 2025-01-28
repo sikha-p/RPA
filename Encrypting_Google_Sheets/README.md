@@ -7,8 +7,8 @@ This repository provides a utility for encrypting values in a Google Sheet and d
 1. **Add the Script to Google Sheets**
    - In the App Script editor of your Google Sheet, copy and paste the code from the `appScript.js` file available in this repository.
    - This code utilizes a library to encode the values.
+![image](https://github.com/user-attachments/assets/15c86361-9877-446f-bc8f-874f66a6c41b)
 
-XXXXXXXXXXX Result Images xxxxxxxxxxxxxxxxx
 
 2. **Import the Required Library**
    - Visit the following URL to access the library:  
@@ -20,7 +20,8 @@ XXXXXXXXXXX Result Images xxxxxxxxxxxxxxxxx
 
 4. Use the 'crypto-js.js' in your javascript package on the control room.
 
-xxxxxxxxxxxxxxx result image xxxxxxxxxxxxxxxx
+![image](https://github.com/user-attachments/assets/50b023a8-8211-4889-ad7f-5a8c54d0d2bc)
+
 
 
 ## Additional Instructions
