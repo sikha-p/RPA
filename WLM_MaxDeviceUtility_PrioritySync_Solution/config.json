@@ -1,0 +1,15 @@
+{
+  "base_cr_url" : "https://aa-se-ind-5.my.automationanywhere.digital",
+  "auth_credentials" : { "username" :  "sikha_auth_user" , "apiKey" :  "a`W}l>1;O:wb[zQGS1b}ha}come~`Q@wXvXX=K~?"},
+  "active_queue_id" : "207",
+  "priority_columns" : ["WorkItemPriority","ProcessPriority"],
+  "FeederQueueDetails" :  [
+        {"QueueID": "209", "TemplateID": "222", "CycleTime" : "3", "ProcessPriority" :  "1"},
+        {"QueueID": "208", "TemplateID": "221", "CycleTime" : "30" , "ProcessPriority" :  "2"},
+      {"QueueID": "210", "TemplateID": "223", "CycleTime" : "15" , "ProcessPriority" :  "3"}
+    ],
+  "WorkItemPriorityKey" : "WorkItemPriority",
+  "sender_email" : "gsd661123@gmail.com",
+  "password" : "*******",
+  "receiver_email" : "sikha.p@automationanywhere.com"
+}
