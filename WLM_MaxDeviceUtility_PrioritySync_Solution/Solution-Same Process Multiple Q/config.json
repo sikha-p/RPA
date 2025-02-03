@@ -1,0 +1,38 @@
+{
+  "base_cr_url" : "https://aa-se-ind-5.my.automationanywhere.digital",
+  "auth_credentials" : { "username" :  "sikha_auth_user" , "apiKey" :  "a`W}l>1;O:wb[zQGS1b}ha}come~`Q@wXvXX=K~?"},
+  "logfile_folder_path" : "C:\\Users\\Sikha.P\\OneDrive - Automation Anywhere Software Private Limited\\AA_SIKHA\\AA_SIKHA\\EA Tickets\\WLM_Optimized _JLL",
+  "active_queue_id" : "207",
+  "priority_columns" : [],
+  "ProcessDetails" : [
+    { "Process" : "PurchaseOrder",
+      "ProcessPriority" : "1",
+      "CycleTime" : "3",
+      "FeederQueueDetails" :
+        [
+          {"QueueID": "209", "TemplateID": "222",  "QueuePriority" :  "2"},
+          {"QueueID": "220", "TemplateID": "222", "QueuePriority" :  "1"}
+        ]
+    },
+     { "Process" : "Invoice" ,
+       "ProcessPriority" : "2",
+       "CycleTime" : "30" ,
+      "FeederQueueDetails" :
+        [
+           {"QueueID": "208", "TemplateID": "221", "QueuePriority" :  "2"},
+           {"QueueID": "221", "TemplateID": "221",  "QueuePriority" :  "1"}
+        ]
+    },
+     { "Process" : "Payroll" ,
+       "ProcessPriority" : "3",
+       "CycleTime" : "15" ,
+      "FeederQueueDetails" :
+        [
+          {"QueueID": "210", "TemplateID": "223",  "QueuePriority" :  "3"}
+        ]
+    }
+  ],
+  "sender_email" : "*****@aa.com",
+  "password" : "*******",
+  "receiver_email" : "******@aa.com"
+}
