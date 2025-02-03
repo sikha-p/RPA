@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/02ad9261-dd4a-4010-9640-cb6d1cdf50b3)# A WLM solution that ensures 100% device utilization and Process the WorkItems from different Queues based on the Process Priority & WorkItem Priority -  
+# A WLM solution that ensures 100% device utilization and Process the WorkItems from different Queues based on the Process Priority & WorkItem Priority -  
 
 This is a solution if you have Multiple Queues under the same Process and all these queues will be Utilizing the same devices (devicepool)
 
