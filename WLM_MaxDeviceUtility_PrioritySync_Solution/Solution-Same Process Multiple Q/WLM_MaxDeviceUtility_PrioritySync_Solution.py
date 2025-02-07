@@ -108,19 +108,24 @@ def fetch_automations_by_queueid(queue_id, payload_dormant):
         response = requests.post(BASE_CR_URL + "/v3/wlm/automations/list", json=payload_dormant, headers=headers)
         response.raise_for_status()
         json_response = response.json()
-        if 'list' in json_response:
+        if 'list' in json_response and isinstance(json_response['list'], list) and json_response['list']:
             fileID = json_response['list'][0]['fileId']
             poolID = json_response['list'][0]['poolId']
             response = requests.get(BASE_CR_URL + "/v2/repository/files/" + fileID, headers=headers)
             if response.status_code == 200:
                 json_response = response.json()
-            bot_path = json_response.get('path')
-            bot_path = bot_path.replace("Automation Anywhere\\", "")
-            log(f"Bot associated with queue. Bot path: {bot_path}, PoolID: {poolID}", "debug")
-            return {"bot_path": bot_path, "poolId": poolID}
+                bot_path = json_response.get('path')
+                bot_path = bot_path.replace("Automation Anywhere\\", "")
+                log(f"Bot associated with queue. Bot path: {bot_path}, PoolID: {poolID}", "debug")
+                return {"bot_path": bot_path, "poolId": poolID}
+            else:
+                log(f"v2/repository/files API response code {response.status_code}","debug")
+                return {}
+        else:
+            log(f"/v3/wlm/automations/list resposnse list attribute value is empty. QueueID : {queue_id}","debug")
     except requests.exceptions.RequestException as e:
         log(f"Failed to fetch work items for queue {queue_id} from {BASE_CR_URL}/v3/wlm/automations/list: {e}", "debug")
-        return []
+        return {}
 
 
 # Function to create queue and workitems list
@@ -313,7 +318,7 @@ def fetch_unprocessed_workitems_from_feederqueues(Queues):
         bot_details = fetch_automations_by_queueid(queue_id, payload_dev)
         bot_path = bot_details["bot_path"]
         poolId = bot_details["poolId"]
-        DevicesCountInPool = getDevices_count_by_poolID(poolId)
+        DevicesCountInPool = detail["AllocatedDeviceCount"]#getDevices_count_by_poolID(poolId)
         # Map columns to template attributes (use your existing column_mapping function)
         column_mapping = fetch_template_attributes(template_id)  # Fetch attribute mappings
 
@@ -545,13 +550,19 @@ def sort_and_add_workitems_to_activequeue_from_feederqueues(queues):
         # Convert the entry to a string format for ReferenceID
         reference_id = str(entry).replace("'", '"')  # replace single quotes with double quotes for JSON consistency
         bot_path = entry.get('BotPath', '')  # Get BotID
+        # work_item = {
+        #     "json": {
+        #         "Body": reference_id,
+        #         "BotPath": bot_path,
+        #         "ProcessPriority": entry['ProcessPriority'],
+        #         "WorkitemPriority": entry['QueuePriority'],
+        #         "Score": 0
+        #     }
+        # }
         work_item = {
             "json": {
                 "Body": reference_id,
-                "BotPath": bot_path,
-                "ProcessPriority": entry['ProcessPriority'],
-                "WorkitemPriority": entry['QueuePriority'],
-                "Score": 0
+                "BotPath": bot_path
             }
         }
         payload["workItems"].append(work_item)
@@ -710,7 +721,7 @@ def updateLastPoll(csvFileName, queueIDs):
 
 def updateLastCron(filename):
     # Specify the headers for the CSV file
-    headers = ["QueueID", "TemplateID", "CycleTime","ProcessName",  "ProcessPriority", "QueuePriority","LastPoll", "LastCron"]
+    headers = ["QueueID", "TemplateID", "CycleTime","ProcessName",  "ProcessPriority", "QueuePriority","AllocatedDeviceCount","LastPoll", "LastCron"]
 
 
     # Get the current time for LastCron
@@ -721,6 +732,7 @@ def updateLastCron(filename):
         process_priority = process["ProcessPriority"]
         cycle_time = process["CycleTime"]
         process_name = process["Process"]
+        allocated_device_count = int(process["AllocatedDeviceCount"])
 
         for queue in process["FeederQueueDetails"]:
             # Add ProcessPriority to each queue and prepare the dictionary
@@ -730,6 +742,7 @@ def updateLastCron(filename):
                 "CycleTime": cycle_time,
                 "ProcessName": process_name,
                 "ProcessPriority": process_priority,
+                "AllocatedDeviceCount" : allocated_device_count,
                 "QueuePriority": queue["QueuePriority"],
                 "LastPoll": "",  # Leave LastPoll empty
                 "LastCron": current_time  # Set LastCron to current time
