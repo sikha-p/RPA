@@ -7,7 +7,8 @@ This is a solution if you have Multiple Queues under the same Process and all th
 
 
 
-![image](https://github.com/user-attachments/assets/230b084d-93e4-4837-9d90-6034e8738abf)
+![Untitled Diagram drawio (4)](https://github.com/user-attachments/assets/822888ce-ebd6-41df-b92c-a1557c8281c3)
+
 
 
 
