@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RunPowershellScript
 {
-    class Class2
+    class RunScriptClass
     {
         public static string RunScript(string scriptFilePath, string inputString)
         {
@@ -22,16 +23,23 @@ namespace RunPowershellScript
                     return "PSHome environment variable is not set.";
                 }
 
-                // Construct the path to the PowerShell executable
-                string powershellExe = psHome;//System.IO.Path.Combine(psHome, "pwsh.exe");
-                // Check if the PowerShell executable exists
-                if (!System.IO.File.Exists(powershellExe))
+                // Construct PowerShell executable path
+                string powershellExe = Path.Combine(psHome, "pwsh.exe");
+
+                // If pwsh.exe is missing, try Windows PowerShell
+                if (!File.Exists(powershellExe))
                 {
-                    Console.WriteLine($"PowerShell executable not found at: {powershellExe}");
+                    powershellExe = Path.Combine(psHome, "powershell.exe");
+                    
+                }
+
+                //return powershellExe;
+                // Final check if PowerShell executable exists
+                if (!File.Exists(powershellExe))
+                {
                     return $"PowerShell executable not found at: {powershellExe}";
                 }
 
-              
                 // Define the PowerShell script to run
                 string scriptPath = scriptFilePath;
                 string scriptArgument = "\"" + inputString.Replace("\"", "\"\"") + "\"";
