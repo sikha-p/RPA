@@ -12,7 +12,8 @@ This repository provides a utility for disabling multiple bot commands in bots w
    - Fill in the required commands and attributes.
 
    **Example:**
-   ![image](https://github.com/user-attachments/assets/61b50e53-0331-4fd8-8c50-4a37841175bd)
+   ![image](https://github.com/user-attachments/assets/88f49039-f688-4463-b7b1-fb59ad4b3dc3)
+
 
 
 3. **Retrieve Command Information**
@@ -26,6 +27,7 @@ This repository provides a utility for disabling multiple bot commands in bots w
         ```
      5. Check the request payload and the `nodes` object; you will find the command name, package name there.
      6.   ![image](https://github.com/user-attachments/assets/8190475f-10bc-4b82-b779-0b52532e30a0)
+     7.   Note:  same API can be found if you refresh an existing bot (which has all the required commands) edit page. 
 
 
 4. **Generate Pre-Update Report**
@@ -35,11 +37,19 @@ This repository provides a utility for disabling multiple bot commands in bots w
    -    ![image](https://github.com/user-attachments/assets/873bd31b-f348-47ec-839e-f2b2509216fb)
 
 
-   - This will add two additional sheets to the `Input.xlsx` file: "Bot_IDs" and "Pre-update-report".
+   - This will add two additional sheets to the `Input.xlsx` file: "Bot_IDs" and "Pre-update-report".These details are necessary for executing the Bot that disables these commands. BulkBotCommandDisableMaster bot. 
+
 
 5. **Run the BulkBotCommandDisableMaster Bot**
    - Next, run the `BulkBotCommandDisableMaster` bot to disable the commands the bots identified via the 'BulkDisableCommands-Report' bot..
-   - Ensure you specify the folder containing the updated `Input.xlsx` file (which now has three sheets).
+   - Ensure you specify the folder containing the updated `Input.xlsx` file (which now has three sheets. "Updates", "Bot_IDs" and "Pre-update-report").
+   - **Before**
+   -    ![image](https://github.com/user-attachments/assets/2063599d-803f-4701-811e-6981015d95e0)
+
+   - **After**
+   -    
+   -    ![image](https://github.com/user-attachments/assets/02a0fefe-b6ad-49dc-b2b1-2e0c4d1efe6b)
+
 
 6. **Review Update Status**
    - The bot will disable the commands within the bots and create a `Post_update_report` sheet for you to review the update status.
