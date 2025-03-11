@@ -36,12 +36,17 @@ This repository provides a utility for disabling multiple bot commands in bots w
    - This Utility will work on the Public folder.Please provide your Public folder ID as the input.  So no need to check out the bots before running this Utility bots. Keep all your bots in the public folder and give the public folder ID. Refer the image given below for the public folder ID sample
    -    ![image](https://github.com/user-attachments/assets/873bd31b-f348-47ec-839e-f2b2509216fb)
 
+   - Input parameters to run the report bot
+   -    ![image](https://github.com/user-attachments/assets/755a9a44-d6ae-49af-a54f-5ac17041639c)
+   -    The modified input.xlsx file should keep inside the "5_inputOuputFolderPath" value provided as input. 
 
-   - This will add two additional sheets to the `Input.xlsx` file: "Bot_IDs" and "Pre-update-report".These details are necessary for executing the Bot that disables these commands. BulkBotCommandDisableMaster bot. 
+   - This bot will add two additional sheets to the `Input.xlsx` file: "Bot_IDs" and "Pre-update-report".These details are necessary for executing the Bot that disables these commands. BulkBotCommandDisableMaster bot. 
 
 
 5. **Run the BulkBotCommandDisableMaster Bot**
    - Next, run the `BulkBotCommandDisableMaster` bot to disable the commands the bots identified via the 'BulkDisableCommands-Report' bot..
+   -    ![image](https://github.com/user-attachments/assets/700e4c61-ddd2-44f0-8d7a-9c40551fd6b2)
+
    - Ensure you specify the folder containing the updated `Input.xlsx` file (which now has three sheets. "Updates", "Bot_IDs" and "Pre-update-report").
    - **Before**
    -    ![image](https://github.com/user-attachments/assets/2063599d-803f-4701-811e-6981015d95e0)
