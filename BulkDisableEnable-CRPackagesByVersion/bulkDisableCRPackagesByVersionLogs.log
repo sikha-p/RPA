@@ -1,0 +1,32 @@
+(12-03-2025 15:33:46) INFO: Bot execution STARTED...
+(12-03-2025 15:33:56) INFO: Couldn't find  "Post_Update_Report" worksheet in the input excel file.
+(12-03-2025 15:34:00) INFO: Started processing PackageName : MessageBox, PackageVersion:  2.1.0-20210227-025722
+(12-03-2025 15:34:01) INFO: Calling Package Disable API.
+(12-03-2025 15:34:02) INFO: Getting Package meta info after update.
+(12-03-2025 15:34:03) INFO: Status update Successful.
+------------------------------------------------
+(12-03-2025 15:34:03) INFO: Started processing PackageName : DLL, PackageVersion:  3.4.0-20210118-185806
+(12-03-2025 15:34:04) INFO: Calling Package Disable API.
+(12-03-2025 15:34:06) INFO: Getting Package meta info after update.
+(12-03-2025 15:34:07) ERROR: Something went wrong. Status not updated.
+----------------------------------------------------
+(12-03-2025 15:34:07) INFO: Started processing PackageName : Calculator, PackageVersion:  2.7.0-20240209-174235
+(12-03-2025 15:34:08) INFO: Calling Package Disable API.
+(12-03-2025 15:34:09) INFO: Getting Package meta info after update.
+(12-03-2025 15:34:10) INFO: Status update Successful.
+------------------------------------------------
+(12-03-2025 15:37:24) INFO: Bot execution STARTED...
+(12-03-2025 15:37:37) INFO: Deleted existing "Post_Update_Report" worksheet from the input excel file.
+(12-03-2025 15:37:40) INFO: Started processing PackageName : MessageBox1, PackageVersion:  2.1.0-20210227-025722
+(12-03-2025 15:37:41) ERROR: Something went wrong. Unable to fetch Package details.
+Package name : MessageBox1 
+Package Version: 2.1.0-20210227-025722
+(12-03-2025 15:37:41) INFO: Started processing PackageName : DLL, PackageVersion:  3.4.0-20210118-185806
+(12-03-2025 15:37:42) INFO: Calling Package Disable API.
+(12-03-2025 15:37:43) INFO: Getting Package meta info after update.
+(12-03-2025 15:37:45) INFO: Status update Successful.
+------------------------------------------------
+(12-03-2025 15:37:45) INFO: Started processing PackageName : Calculator, PackageVersion:  2.7.7-20240209-174235
+(12-03-2025 15:37:46) ERROR: Something went wrong. Unable to fetch Package details.
+Package name : Calculator 
+Package Version: 2.7.7-20240209-174235
