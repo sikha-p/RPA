@@ -44,8 +44,8 @@ The following modules are needed for this script:
    - logging (Built-in)
    - requests (External)
 
-To install the external module, run:
-   **pip install requests**
+To install the external module, run
+   - ``pip install requests``
 
 
 **3. Control Room Access** 
@@ -54,15 +54,18 @@ To install the external module, run:
 	- https://docs.automationanywhere.com/bundle/enterprise-v2019/page/audit-api-supported.html
 
 
-##Inputs
+## Inputs
 
 To run the utility, the following inputs are required:
+
+![image](https://github.com/user-attachments/assets/dd861a97-22c8-43f2-b273-3f68be44088f)
+
    - **Control Room URL**: The control room url for log retrieval.
    - **Credentials**: Authentication details (Username & APIKey) to access audit logs securely.
    - **Starttime** and **Endtime** :  The date range for log extraction, specified in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
-	- Example: 2025-03-28T06:18:33Z
+   - ``Example: 2025-03-28T06:18:33Z``
 
-##Process Flow
+## Process Flow
    - User provides input details:
 	- Control Room details
 	- Credentials for authentication
@@ -78,16 +81,19 @@ To run the utility, the following inputs are required:
    - Process continues until all logs are exported.
 
 
-##Output
+## Output
+
+![image](https://github.com/user-attachments/assets/d867f786-e554-44af-95ca-cc949bc4c764)
+
    - **CSV File**: Contains all fetched logs structured by date range (filename  : Auditlogs.csv) .
    - **Log File**: Stores details of executed operations, errors, and processing information (filename : fetchAuditLogs.log).
 
-##Use Case
+## Use Case
 
    - This utility is ideal for organizations that need to extract and analyze audit logs systematically. The batch-based approach ensures efficiency while preventing system overload.
 
 
-##Note
+## Note
 This audit log export utility simplifies log retrieval and management by automating the process. With its structured approach, users can efficiently extract and analyze audit logs while ensuring data integrity and security.
 
          
