@@ -2,6 +2,8 @@
 
 This utility allows users to export audit logs within a specified date range efficiently. The logs are fetched in batches of 400 records using an offset mechanism and exported to a CSV file. The process continues until all logs within the date range are retrieved.
 
+Utility is an A360 Bot, you can find the exported bot from the same repo. download and import it to your Control Room and start using it.
+
 ## Key Features
 
 1. **Batch Processing**
