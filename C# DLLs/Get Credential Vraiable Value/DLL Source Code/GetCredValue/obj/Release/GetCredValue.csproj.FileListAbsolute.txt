@@ -1,6 +1,0 @@
-C:\Users\Sikha.P\source\repos\GetCredValue\bin\Release\GetCredValue.dll
-C:\Users\Sikha.P\source\repos\GetCredValue\bin\Release\GetCredValue.pdb
-C:\Users\Sikha.P\source\repos\GetCredValue\obj\Release\GetCredValue.csproj.AssemblyReference.cache
-C:\Users\Sikha.P\source\repos\GetCredValue\obj\Release\GetCredValue.csproj.CoreCompileInputs.cache
-C:\Users\Sikha.P\source\repos\GetCredValue\obj\Release\GetCredValue.dll
-C:\Users\Sikha.P\source\repos\GetCredValue\obj\Release\GetCredValue.pdb
