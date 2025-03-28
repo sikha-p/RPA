@@ -10,8 +10,16 @@ This solution can return the actual value of a credential varaible attributes. I
 
 1. **Inputs**
    - Fetches logs in chunks of 400 records to optimize performance.
+   - ![image](https://github.com/user-attachments/assets/839e6437-8b0c-4e8d-95fd-2b1644a4aa9f)
 
-2. **Dependencies**
-   - Logs are exported in a structured CSV format.
+  
+   - ![image](https://github.com/user-attachments/assets/31a54c31-20f1-4e8b-823c-9fbf6fc0ee6b)
+
+
+
+
+## How to use
+Use this DLL inside your A360 Bot, pick the credential varaibale attribute names from the variables section for input paramater value. 
+The Run DLL function will return the actual credential Attribute value as DLL response. Save that to a string variable.
 
 
