@@ -1,0 +1,8 @@
+{
+  "OKTA_DOMAIN" : "dev-111111.okta.com",
+  "CLIENT_ID" : "your_client_id" ,
+  "CLIENT_SECRET" :"your_client_secret",
+  "SECRET_KEY": "your-secure-secret",
+  "JWT_SECRET": "jwt_speaker"
+
+}
