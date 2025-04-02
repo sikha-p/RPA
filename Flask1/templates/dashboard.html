@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .user-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Welcome to Your Dashboard</h1>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+    </div>
+
+    <div class="user-info">
+        <h2>User Information</h2>
+        {% if user %}
+        <p><strong>Name:</strong> {{ user.get('name', 'N/A') }}</p>
+        <p><strong>Email:</strong> {{ user.get('email', 'N/A') }}</p>
+        <p><strong>Email:</strong> {{ user.get('is_normal_user', 'N/A') }}</p>
+        {% if user.get('is_normal_user')%}
+        <p><strong>Login Method:</strong> Regular Account</p>
+        {% else %}
+        <p><strong>Login Method:</strong> Okta SSO</p>
+        {% endif %}
+        {% else %}
+        <p>No user information available.</p>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
