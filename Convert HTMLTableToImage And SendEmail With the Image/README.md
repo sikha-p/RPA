@@ -5,6 +5,7 @@ This article outlines a solution to convert HTML table content into an image and
 ## Use Case
 
 1. Some email clients may not render HTML tables consistently, especially when styles or local paths are involved. Converting the HTML table into an image ensures a consistent visual representation. The image can then be embedded directly within the email body.
+   
 
 ## Prerequisites
    - Python 3.x
@@ -21,7 +22,8 @@ This article outlines a solution to convert HTML table content into an image and
 
 
 2. **Step 2: Python Function to Convert HTML Table to Image**
-   	```import imgkit
+```
+import imgkit
 import os
 
 def convert_html_to_image(args):
@@ -45,6 +47,8 @@ def convert_html_to_image(args):
 ```
 
 4. **Step 3: Sample HTML Table Input**
+
+
    
 ```
 <table border="1">
@@ -70,8 +74,22 @@ def convert_html_to_image(args):
 
 ```
 
+
+
 5. **Inputs to the bot.**
-   
+
+   Please find the A360 Bot exported copy from the repo (**Export.ConvertHTMLTableToImage.sikha_creator.zip**). Download and import that into your Control Room and start using it by providing proper inputs.
+
+ 
+
+![image](https://github.com/user-attachments/assets/f58c9300-d9e8-4c13-a170-980c378c6cb1)
+
+
+5. **Sample Email**
+
+![image](https://github.com/user-attachments/assets/d6798e11-e8b3-427b-8ca3-7cb8e230f148)
+
+
 
 
 
