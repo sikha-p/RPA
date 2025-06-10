@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "EMDR Tracker",
+  "version": "1.0",
+  "permissions": ["tabs", "scripting", "storage"],
+   "host_permissions": ["https://aa-pet-us-17.my.automationanywhere.digital/v4/automations/deploy"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://localhost:3000/apex/EMDR*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "EMDR Tracker"
+  }
+}
