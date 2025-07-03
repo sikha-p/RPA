@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EMDR Tracker</title>
+  <style>
+   body {
+     font-family: sans-serif;
+     padding: 15px;
+     width: 350px;
+   }
+   .section {
+     margin-bottom: 20px;
+     padding: 10px;
+     border: 1px solid #eee;
+     border-radius: 5px;
+   }
+   select, button {
+     width: 100%;
+     padding: 8px;
+     margin: 5px 0;
+     box-sizing: border-box;
+   }
+   button {
+     background: #4285f4;
+     color: white;
+     border: none;
+     cursor: pointer;
+   }
+   button.secondary {
+     background: #f1f1f1;
+     color: #333;
+   }
+   h3 {
+     margin-top: 0;
+     color: #4285f4;
+   }
+   ul {
+     padding-left: 20px;
+   }
+   .hidden {
+     display: none;
+   }
+</style>
+</head>
+<body>
+<div id="configSection" class="section">
+  <h3>CR Configuration</h3>
+  <select id="crUrlSelect">
+    <option value="">-- Select CR Instance --</option>
+    <option value="https://cr-prod.example.com">https://cr-prod.example.com</option>
+    <option value="https://cr-staging.example.com">https://cr-staging.example.com</option>
+    <option value="https://aa-pet-us-17.my.automationanywhere.digital">https://aa-pet-us-17.my.automationanywhere.digital</option>
+  </select>
+  <input type="text" id="customUrl" placeholder="Or enter custom URL">
+  <button id="saveConfigBtn">Save Configuration</button>
+</div>
+<div id="trackedSection" class="section">
+  <h3>Tracked EMDR IDs</h3>
+  <ul id="emdrList"></ul>
+  <button id="clearListBtn" class="secondary">Clear All</button>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
