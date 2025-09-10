@@ -7,39 +7,42 @@ This repository provides a utility for tracing Packages and Commands Usage Acros
 
 1. **IMPORT THE BOT UTILITY TO YOUR CONTROL ROOM**
    - Download the exported copy of the utility (Its an A360 Bot - `Export.TracePackagesnCommands.sikha_creator.zip`) into your control room.
-   - You can find the Utility bot and dependent files in "**TracePackagesnCommandsUtility**" folder
+   - You can find the Utility bot and dependent files in "**TracePackagesnCommands**" folder
    - - This utility consists of :
-       - **TracePackagesnCommandsBot** – Responsible for generating a report based on input data.
-       - and a dependent Python script file as well.
+       - **TracePackagesnCommands** task bot – Responsible for generating a report based on input data.
+       - and a dependent Python script file  **TracePackagesnCommandsScript.py** as well.
 
 2. **MODIFY THE INPUT FILE**
-   - Download the **Input.xlsx** file from this repository. 
-   - Open the `Input.xlsx` file and navigate to the "Inputs" sheet.
+   - Download the **input.xlsx** file from this repository. 
+   - Open the `input.xlsx` file and navigate to the "Inputs" sheet.
    - Fill in the required Packages and Commands.
    - You should keep this updated Input.xlsx file in the InputOutputFolder specified while running the Bots.
-   - If you're only interested in knowing which automations use certain packages:
-Just include a single column in your input sheet named "Package Name". This will help the utility scan and report all automations that reference those packages.
+   - If you're only interested in knowing **which automations use certain packages**:
+      - Just include a single column in your input sheet named **"Package Name"**. This will help the utility scan and report all automations that reference those packages.
+      - <img width="299" height="128" alt="image" src="https://github.com/user-attachments/assets/c828b6ff-6f0d-442e-9525-dcc16261f44d" />
 
-   - If you want to find out only some specific commands within those packages are being used:
-Then your input sheet needs two columns:
 
-One for "Package Name"
-Another for "Command Name"
-This allows the utility to trace command-level usage across automations.
-   **Example:**
-   ![image](https://github.com/user-attachments/assets/61b50e53-0331-4fd8-8c50-4a37841175bd)
+   - If you want to find out **only some specific commands within those packages** are being used:
+        - Then your input sheet needs two columns:
+             - One for **"Package Name"**
+             - Another for **"Command Name"**
+             - <img width="300" height="125" alt="image" src="https://github.com/user-attachments/assets/8b4b8472-8750-4d40-9983-038339d60e33" />
 
+        - This allows the utility to trace command-level usage across automations.
+    
+          
+ 
 
 4. **RETRIEVE COMMAND INFORMATION**
    - To obtain the Command name, Package name, Attribute name, and Attribute value:
-     1. Create a new bot and drag and drop the command listed in the "BulkBotCommandUpdater" input Excel file.
+     1. Create a new bot and drag and drop the command listed in the input Excel file.
      2. Fill in the required details with placeholder data.
      3. Inspect the page by pressing `F12` and navigate to the Network tab.
      4. Search for the API endpoint:
         ```
         <CR_URL>/v2/repository/files/<Bot_id>/content?hasErrors=false
         ```
-     5. Check the request payload and the `nodes` object; you will find the command name, package name, and attribute name there.
+     5. Check the request payload and the `nodes` object; you will find the command name, package name there. Use it as per your requirement in the input.xlsx file
      6.   ![image](https://github.com/user-attachments/assets/8190475f-10bc-4b82-b779-0b52532e30a0)
 
 
@@ -49,7 +52,7 @@ This allows the utility to trace command-level usage across automations.
      ```
      pip install openpyxl pandas requests requests-toolbelt
      ```
-   - Execute the `BulkBotCommandsUpdater_V2_REPORT` bot to generate a report of the bots in the specified folder, which includes the given commands.
+   - Execute the **`TracePackagesnCommands`** bot to generate a report of the bots in the specified folder, which includes the given packages and commands.
    - Bot Input details :
    -    ![image](https://github.com/user-attachments/assets/472687da-e17e-418a-b2a6-b25bfbeafd33)
 
@@ -61,22 +64,15 @@ This allows the utility to trace command-level usage across automations.
    -    ![image](https://github.com/user-attachments/assets/873bd31b-f348-47ec-839e-f2b2509216fb)
 
 
-   - This will add two additional sheets to the `Input.xlsx` file: "Bot_IDs" and "Pre-update-report".
+   - This will add two additional sheets to the `Input.xlsx` file:  "Report" and "Bot_IDs".
+   -    <img width="959" height="423" alt="image" src="https://github.com/user-attachments/assets/d6f01a1e-8ad4-4f42-b552-a77b33a868c4" />
+
+    - <img width="262" height="424" alt="image" src="https://github.com/user-attachments/assets/9438d12c-b0d4-4e25-ab1f-4dc745768377" />
+
+
    - 
 
- 
-
-6. **RUN THE BULKBOTCOMMANDUPDATER BOT**
-   - Next, run the `BulkBotCommandsUpdater_V2` bot to update the commands and attributes within the bots.
-   - Ensure you specify the folder containing the updated `Input.xlsx` file (which now has three sheets).
-  
-   - ![image](https://github.com/user-attachments/assets/0507a6a9-3117-43e6-b6a2-985a4b2ddf50)
-
-
-
-7. **REVIEW THE UPDATE STATUS**
-   - The bot will update the commands with the specified attribute values and create a `Post_update_report` sheet for you to review the update status.
-   - A log file will be generated in the `inputOutputFolder`, named `bulkbotcommandupdater.log`.
+   - A log file will be generated in the `inputOutputFolder`, named `packagescanner.log`.
 
 ## Note
 
